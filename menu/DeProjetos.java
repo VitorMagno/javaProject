@@ -3,11 +3,11 @@ package menu;
 import java.util.Scanner;
 
 public class DeProjetos implements Menu {
+    Scanner input = Input.getInstancia();
     @Override
     public void principal() {
         boolean running = true;
         int option;
-        Scanner input = Input.getInstancia();
         while (running){
             System.out.println("Selecione: \n1 - mostrar projetos \n2 - adicionar projeto \n3 - ver projeto \n4 - excluir projeto \n0 - voltar ao menu principal");
             option = input.nextInt();

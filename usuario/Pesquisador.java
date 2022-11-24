@@ -13,38 +13,38 @@ public class Pesquisador implements Usuario {
 
     @Override
     public String getNome() {
-        
         return this.nome;
     }
 
     @Override
-    public void setNome() {
-        
-        
+    public void setNome(String novoNome) {
+        this.nome = novoNome;
     }
 
     @Override
     public String getCpf() {
-        
         return this.cpf;
     }
 
     @Override
-    public void setCpf() {
-        
-        
+    public void setCpf(String novoCpf) {
+        this.cpf = novoCpf;
     }
 
     @Override
     public String getUnidadeAcademica() {
-       
         return this.unidadeAcademica;
     }
 
     @Override
-    public void setUnidadeAcademica() {
-       
-        
+    public void setUnidadeAcademica(String novaUnidadeAcademica) {
+        this.unidadeAcademica = novaUnidadeAcademica;
     }
+
+    
+
+    
+
+    
 
 }
