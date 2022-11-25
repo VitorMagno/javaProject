@@ -2,12 +2,16 @@ package menu;
 
 import java.util.GregorianCalendar;
 
+import atividade.AtividadeService;
+import projeto.ProjetoService;
 import usuario.UsuarioService;
 
 public final class FactoryCustom {
     private static Menu instanciaProjetos;
     private static Menu instanciaUsuarios;
     private static UsuarioService instanciaUsuarioService;
+    private static ProjetoService instanciaProjetoService;
+    private static AtividadeService instanciaAtividadeService;
     private static GregorianCalendar instanciaGCalendar;
 
 
@@ -35,5 +39,17 @@ public final class FactoryCustom {
             instanciaGCalendar = new GregorianCalendar();
         }
         return instanciaGCalendar;
+    }
+    public static ProjetoService getInstanciaProjetoService(){
+        if (instanciaProjetoService == null){
+            instanciaProjetoService = new ProjetoService();
+        }
+        return instanciaProjetoService;
+    }
+    public static AtividadeService getInstanciaAtividadeService(){
+        if (instanciaAtividadeService == null){
+            instanciaAtividadeService = new AtividadeService();
+        }
+        return instanciaAtividadeService;
     }
 }

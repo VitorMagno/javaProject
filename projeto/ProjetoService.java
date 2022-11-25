@@ -2,9 +2,7 @@ package projeto;
 
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import menu.Input;
 import usuario.Usuario;
 import usuario.UsuarioService;
 
@@ -12,23 +10,37 @@ public class ProjetoService {
     UsuarioService servicosDoUsuario = menu.FactoryCustom.getInstanciaUsuarioService();
     private ArrayList<Projeto> projetos =  new ArrayList<Projeto>();
     Usuario usuarioLogado = servicosDoUsuario.getUsuarioLogado();
-    Scanner input = Input.getInstancia();
 
-    public void criarProjeto(){
-        if (usuarioLogado == null){
+    public boolean verificacaoUsuario(){
+        if(usuarioLogado == null){
             System.out.println("usuario nao logado, por favor faca o login para acessar a essa funcionalidade");
+            return false;
         }
         else if(usuarioLogado.getClass().getSimpleName() != "Professor"){
-            System.out.println("Somente um professor pode criar um projeto");
-        } else {
-            String nome, descricao, unidadeAcademica;
+            System.out.println("verificando usuario...\nFuncionalidade exclusiva para professores");
+            return false;
+        }else{
+            System.out.println("verificando usuario....\nAceito");
+            return true;
+        }
+    }
+
+    public void criarProjeto(String nome, String descricao, String unidadeAcademica){
+        if(verificacaoUsuario()){
             Usuario coordenador = usuarioLogado;
-            nome = input.next();
-            descricao = input.next();
-            unidadeAcademica = input.next();
             Projeto novoProjeto = new Projeto(nome, descricao, unidadeAcademica, coordenador);
             projetos.add(novoProjeto);
         }
+    }
+
+    public void exluirProjeto(String nomeProjeto) {
+        Projeto projetoParaExclusao = findProjeto(nomeProjeto);
+        if(projetoParaExclusao != null){
+            System.out.println("projeto"+ projetoParaExclusao.getNome() +"removido");
+            projetos.remove(projetoParaExclusao);
+            return;
+        }
+        System.out.println("projeto nao encontrado");
     }
 
     public void listarProjetos(){

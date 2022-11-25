@@ -11,10 +11,10 @@ public class Projeto {
     private String nome;
     private String descricao;
     private String unidadeAcademica;
+    private Usuario coordenador;
     private Date dataHrInicio;
     private Date dataHrFim;
     private Date periodoVigenciaBolsa;
-    private Usuario coordenador;
     private ArrayList<Profissional> profissionais = new ArrayList<Profissional>();
     private ArrayList<Atividade> atividades = new ArrayList<Atividade>();
     private int valorBolsaProfissional;
@@ -121,7 +121,7 @@ public class Projeto {
     @Override
     public String toString() {
         
-        return "-----------\nNome: " + getNome() +  "\nDescricao: " + getDescricao() +
+        return "------------\nNome: " + getNome() +  "\nDescricao: " + getDescricao() +
         "\nUnidade academica: " + getUnidadeAcademica() + "\nBolsa: " + getValorBolsaProfissional() + "\n------------";
     }
 
