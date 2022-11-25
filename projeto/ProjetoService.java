@@ -31,15 +31,21 @@ public class ProjetoService {
         }
     }
 
-    public Projeto findProjeto(String nomeProjeto){
-        Projeto projetoAchado = null;
+    public void listarProjetos(){
         for (Projeto projeto : projetos) {
-            if(projeto.getNome().equals(projetoAchado)){
-                projetoAchado = projeto;
-                return projetoAchado;
+            System.out.println(projeto);
+        }
+    }
+
+    public Projeto findProjeto(String nomeProjeto){
+        Projeto projetoEncontrado = null;
+        for (Projeto projeto : projetos) {
+            if(projeto.getNome().equals(nomeProjeto)){
+                projetoEncontrado = projeto;
+                return projetoEncontrado;
             }
         }
-        return projetoAchado;
+        return projetoEncontrado;
     }
 
     public void addNovoProfissional(String nomeProfissional, String nomeProjeto){
@@ -55,6 +61,16 @@ public class ProjetoService {
             return;
         }
         System.out.println("usuario ou projeto invalidos, verifique a existencia dos dois");
+    }
+
+    public void removeProfissional(String nomeProfissional, String nomeProjeto){
+        Projeto projetoEncontrado = findProjeto(nomeProjeto);
+        if(projetoEncontrado!=null){
+            projetoEncontrado.removeProfissional(nomeProfissional);
+            return;
+        }
+        System.out.println("projeto nao encontrado");
+
     }
 
     

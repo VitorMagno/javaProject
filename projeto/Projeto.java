@@ -107,10 +107,22 @@ public class Projeto {
         profissionais.add((Profissional) profissional);
     }
 
-    public void removeProfissional(String nomeUsuarioParaRemover){
+    public boolean removeProfissional(String nomeUsuarioParaRemover){
         Usuario usuarioParaRemover = buscarProfissionais(nomeUsuarioParaRemover);
-        profissionais.remove(usuarioParaRemover);
-        System.out.println("usuario " + usuarioParaRemover.getNome() + " removido");
+        if(usuarioParaRemover != null){
+            profissionais.remove(usuarioParaRemover);
+            System.out.println("usuario " + usuarioParaRemover.getNome() + " removido");
+            return true;
+        }
+        System.out.println("usuario " +nomeUsuarioParaRemover+" não encontrado nesse projeto");
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        
+        return "-----------\nNome: " + getNome() +  "\nDescricao: " + getDescricao() +
+        "\nUnidade academica: " + getUnidadeAcademica() + "\nBolsa: " + getValorBolsaProfissional() + "\n------------";
     }
 
 }

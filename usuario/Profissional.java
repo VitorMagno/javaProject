@@ -40,5 +40,9 @@ public class Profissional implements Usuario{
     public void setUnidadeAcademica(String novaUnidadeAcademica) {
         this.unidadeAcademica = novaUnidadeAcademica;
     }
-    
+    @Override
+    public String toString(){
+        return "-----------\nNome: " + getNome() + "\nCpf: " + getCpf() + "\nUnidade Academica: " + getUnidadeAcademica()+
+        "\nFuncao: " +this.getClass().getSimpleName() +"\n-----------";
+    }
 }

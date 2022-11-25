@@ -70,7 +70,7 @@ public class UsuarioService {
     }
 
     public void verInfo(Usuario user){
-        System.out.println("Nome: "+ user.getNome() +"Cpf: "+ user.getCpf() +"Unidade Academica: "+user.getUnidadeAcademica());
+        System.out.println(user);
     }
 
     public void editar(Usuario user){
