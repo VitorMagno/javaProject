@@ -1,9 +1,20 @@
 package projeto;
 
+import java.util.ArrayList;
+
+import usuario.Profissional;
+
 public class Projeto {
     private String nome;
     private String descricao;
     private String unidadeAcademica;
+    private Data dataHrInicio;
+    private Data dataHrFim;
+    private Data periodoVigenciaBolsa;
+    private Usuario coordenador;
+    private ArrayList<Profissional> profissionais = new ArrayList<Profissional>();
+    private ArrayList<Atividade> atividades = new ArrayList<Atividade>();
+    private int valorBolsaProfissional;
 
     public Projeto(String nome, String descricao, String unidadeAcademica){
         this.nome = nome;
