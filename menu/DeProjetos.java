@@ -130,12 +130,13 @@ public class DeProjetos implements Menu {
                     break;
                 case 8:
                     System.out.println("digite a descricao da atividade e em seguida o usuario responsavel");
+                    String identificacao = input.nextLine();
                     String descricao = input.nextLine();
                     String usuarioResponsavel = input.nextLine();
                     Usuario responsavel = usuarioService.findUser(usuarioResponsavel);
                     if(responsavel != null){
                         System.out.println("usuario encontrado, criando atividade...");
-                        atividadeService.criarAtividade(descricao, responsavel);
+                        atividadeService.criarAtividade(identificacao, descricao, responsavel);
                         return;
                     }
                     System.out.println("usuario nao encontrado, atividade nao foi criada");

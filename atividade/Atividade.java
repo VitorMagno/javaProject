@@ -1,14 +1,26 @@
 package atividade;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import usuario.Profissional;
 import usuario.Usuario;
 
 public class Atividade {
-    public Atividade(String descricao, Usuario responsavel) {
+    private String identificacao;
+    private String descricao;
+    private Usuario responsavel;
+    private Date dataHrInicio;
+    private Date dataHrFim;
+    private ArrayList<Profissional> profissionais = new ArrayList<Profissional>();
+    private ArrayList<TarefasPorProfissional> tarefasPorProfissional = new ArrayList<TarefasPorProfissional>();
+    
+    
+    public Atividade (String identificacao, String descricao, Usuario responsavel) {
+        this.identificacao = identificacao;
         this.descricao = descricao;
         this.responsavel = responsavel;
     }
-    private String descricao;
-    private Usuario responsavel;
     public String getDescricao() {
         return descricao;
     }

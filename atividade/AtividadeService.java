@@ -24,9 +24,9 @@ public class AtividadeService {
         }
     }
 
-    public void criarAtividade(String descricao, Usuario responsavel) {
+    public void criarAtividade(String identificacao, String descricao, Usuario responsavel) {
         if(verificacaoUsuario()){
-            Atividade novaAtividade = new Atividade(descricao, responsavel);
+            Atividade novaAtividade = new Atividade(identificacao ,descricao, responsavel);
             atividades.add(novaAtividade);
             System.out.println("atividade adicionada com sucesso");
         }
