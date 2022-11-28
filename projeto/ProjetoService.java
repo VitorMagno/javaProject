@@ -97,7 +97,7 @@ public class ProjetoService {
         if(verificacaoUsuario()){
             Projeto projetoChange = findProjeto(nomeDoProjeto);
             if(projetoChange != null){
-
+                gerenciaEstados();
             }
             System.out.println("projeto nao encontrado");
         }
