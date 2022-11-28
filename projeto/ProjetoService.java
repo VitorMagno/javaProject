@@ -7,9 +7,10 @@ import usuario.Usuario;
 import usuario.UsuarioService;
 
 public class ProjetoService {
-    UsuarioService servicosDoUsuario = menu.FactoryCustom.getInstanciaUsuarioService();
+    private UsuarioService servicosDoUsuario = menu.FactoryCustom.getInstanciaUsuarioService();
+    private Usuario usuarioLogado = servicosDoUsuario.getUsuarioLogado();
     private ArrayList<Projeto> projetos =  new ArrayList<Projeto>();
-    Usuario usuarioLogado = servicosDoUsuario.getUsuarioLogado();
+    private String[] status = {"Em processo de criacao", "Iniciado", "Em andamento", "Concluido"};
 
     public boolean verificacaoUsuario(){
         if(usuarioLogado == null){
@@ -29,18 +30,21 @@ public class ProjetoService {
         if(verificacaoUsuario()){
             Usuario coordenador = usuarioLogado;
             Projeto novoProjeto = new Projeto(nome, descricao, unidadeAcademica, coordenador);
+            novoProjeto.setStatus(status[0]);
             projetos.add(novoProjeto);
         }
     }
 
     public void exluirProjeto(String nomeProjeto) {
-        Projeto projetoParaExclusao = findProjeto(nomeProjeto);
-        if(projetoParaExclusao != null){
-            System.out.println("projeto"+ projetoParaExclusao.getNome() +"removido");
-            projetos.remove(projetoParaExclusao);
-            return;
+        if(verificacaoUsuario()){
+            Projeto projetoParaExclusao = findProjeto(nomeProjeto);
+            if(projetoParaExclusao != null){
+                System.out.println("projeto"+ projetoParaExclusao.getNome() +"removido");
+                projetos.remove(projetoParaExclusao);
+                return;
+            }
+            System.out.println("projeto nao encontrado");
         }
-        System.out.println("projeto nao encontrado");
     }
 
     public void listarProjetos(){
@@ -61,28 +65,46 @@ public class ProjetoService {
     }
 
     public void addNovoProfissional(String nomeProfissional, String nomeProjeto){
-        Usuario profissional = servicosDoUsuario.findUser(nomeProfissional);
-        Projeto projeto = findProjeto(nomeProjeto);
-        if(projeto != null && profissional != null){
-            if(profissional.getClass().getSimpleName()!= "Profissional"){
-                System.out.println("usuario precisa ser do tipo profissional, adicao sem sucesso");
+        if(verificacaoUsuario()){
+            Usuario profissional = servicosDoUsuario.findUser(nomeProfissional);
+            Projeto projeto = findProjeto(nomeProjeto);
+            if(projeto != null && profissional != null){
+                if(profissional.getClass().getSimpleName()!= "Profissional"){
+                    System.out.println("usuario precisa ser do tipo profissional, adicao sem sucesso");
+                    return;
+                }
+                projeto.addProfissional(profissional);
+                System.out.println("adicionado com sucesso");
                 return;
             }
-            projeto.addProfissional(profissional);
-            System.out.println("adicionado com sucesso");
-            return;
+            System.out.println("usuario ou projeto invalidos, verifique a existencia dos dois");
         }
-        System.out.println("usuario ou projeto invalidos, verifique a existencia dos dois");
     }
 
     public void removeProfissional(String nomeProfissional, String nomeProjeto){
-        Projeto projetoEncontrado = findProjeto(nomeProjeto);
-        if(projetoEncontrado!=null){
-            projetoEncontrado.removeProfissional(nomeProfissional);
-            return;
+        if(verificacaoUsuario()){
+            Projeto projetoEncontrado = findProjeto(nomeProjeto);
+            if(projetoEncontrado!=null){
+                projetoEncontrado.removeProfissional(nomeProfissional);
+                return;
+            }
+            System.out.println("projeto nao encontrado");
         }
-        System.out.println("projeto nao encontrado");
 
+    }
+
+    public void changeStatus(String nomeDoProjeto){
+        if(verificacaoUsuario()){
+            Projeto projetoChange = findProjeto(nomeDoProjeto);
+            if(projetoChange != null){
+
+            }
+            System.out.println("projeto nao encontrado");
+        }
+    }
+
+    public void gerenciaEstados(){
+        System.out.println("em construcao");
     }
 
     

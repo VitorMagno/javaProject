@@ -65,8 +65,8 @@ public class DeProjetos implements Menu {
 
     @Override
     public void ver(){
-        System.out.println("seleciona um projeto, dah opcao de editar nome, descricao, valor da bolsa, data de inicio, data de fim, periodo de vigencia da bolsa"
-        +"adicionar profissional, adicionar atividade");
+        System.out.println("seleciona um projeto, mostra opcao de editar nome, descricao, valor da bolsa, data de inicio, data de fim, periodo de vigencia da bolsa"
+        +"adicionar profissional, adicionar atividade, mudar status");
         System.out.println("digite o nome do projeto para ver mais detalhes e opcoes"); 
         String nomeDoProjeto = input.nextLine();
         Projeto projetoEncontrado = projetoService.findProjeto(nomeDoProjeto);
@@ -141,7 +141,8 @@ public class DeProjetos implements Menu {
                     System.out.println("usuario nao encontrado, atividade nao foi criada");
                     break;
                 case 9:
-                    System.out.println("implementar mudanca de status");
+                    String nomeDoProjeto = input.nextLine();
+                    projetoService.changeStatus(nomeDoProjeto);
                     break;
             
                 default:
