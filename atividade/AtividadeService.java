@@ -2,6 +2,8 @@ package atividade;
 
 import java.util.ArrayList;
 
+import javax.swing.plaf.synth.SynthDesktopIconUI;
+
 import usuario.Usuario;
 import usuario.UsuarioService;
 
@@ -31,5 +33,19 @@ public class AtividadeService {
             System.out.println("atividade adicionada com sucesso");
         }
         
+    }
+
+    public void setDataInicio(){
+        System.out.println("implementar");
+    }
+    public void setDataFim(){
+        System.out.println("implementar");
+    }
+    public void addProfissional(){
+        System.out.println("implementar");
+    }
+
+    public void addTarefaAProfissional(){
+        System.out.println("implementar");
     }
 }
