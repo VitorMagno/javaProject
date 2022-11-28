@@ -3,12 +3,11 @@ package usuario;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import menu.FactoryCustom;
 import menu.Input;
 
 public class UsuarioService {
     private ArrayList<Usuario> usuarios =  new ArrayList<Usuario>();
-    private Usuario usuarioLogado;
+    private Usuario usuarioLogado = null;
     Scanner input = Input.getInstancia();
     public void createAluno(String novoNome, String novoCpf, String novaUnidadeAcademica){
         Aluno novoAluno = new Aluno(novoNome, novoCpf, novaUnidadeAcademica);
@@ -31,18 +30,18 @@ public class UsuarioService {
     }
 
     public Usuario getUsuarioLogado(){
-        return usuarioLogado;
+        return this.usuarioLogado;
     }
     public String getTipoUsuario(){
-        return usuarioLogado.getClass().getSimpleName();
+        return this.usuarioLogado.getClass().getSimpleName();
     }
 
     public void logar(String nome, String cpf) throws Exception{
         Usuario usuarioAchado = findUser(nome);
         if(usuarioAchado != null){
             if(usuarioAchado.getNome().equals(nome) && usuarioAchado.getCpf().equals(cpf)){
-                System.out.println("logado em " + nome + " este usuario eh " + getTipoUsuario());
                 this.usuarioLogado = usuarioAchado;
+                System.out.println("logado em " + nome + " este usuario eh " + getTipoUsuario());
             }
             else if(usuarioAchado.getNome().equals(nome) || usuarioAchado.getCpf().equals(cpf)){
                 System.out.println("credenciais incorretas");

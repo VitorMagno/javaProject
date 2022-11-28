@@ -18,6 +18,7 @@ public class Projeto {
     private ArrayList<Profissional> profissionais = new ArrayList<Profissional>();
     private ArrayList<Atividade> atividades = new ArrayList<Atividade>();
     private int valorBolsaProfissional;
+    private String status;
 
     public Projeto(String nome, String descricao, String unidadeAcademica, Usuario coordenador){
         this.nome = nome;
@@ -84,6 +85,14 @@ public class Projeto {
 
     public int getValorBolsaProfissional() {
         return valorBolsaProfissional;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    public String getStatus() {
+        return status;
     }
 
     public Usuario buscarProfissionais (String nomeUsuarioBuscado){
