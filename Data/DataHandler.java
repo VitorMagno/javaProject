@@ -45,7 +45,7 @@ public class DataHandler {
      */
     public boolean checkPeriod(Date inicio, Date fim, int periodo){
         this.gc.setTime(inicio);
-        this.gc.add(0, periodo);
+        this.gc.add(gc.DAY_OF_MONTH, periodo);
         return this.gc.after(fim);
     }
 }
