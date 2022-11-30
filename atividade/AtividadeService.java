@@ -2,7 +2,6 @@ package atividade;
 
 import java.util.ArrayList;
 
-import javax.swing.plaf.synth.SynthDesktopIconUI;
 
 import usuario.Usuario;
 import usuario.UsuarioService;
