@@ -10,7 +10,7 @@ public class DataHandler {
     private Date paraManipular;
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh");
 
-    public DataHandler(String data){
+    public void setDataHR(String data){
         try {
             this.gc = new GregorianCalendar();
             this.gc.setTime(formatter.parse(data));
