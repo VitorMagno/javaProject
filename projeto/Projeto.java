@@ -14,7 +14,7 @@ public class Projeto {
     private Usuario coordenador;
     private Date dataHrInicio;
     private Date dataHrFim;
-    private Date periodoVigenciaBolsa;
+    private int periodoVigenciaBolsa;
     private ArrayList<Profissional> profissionais = new ArrayList<Profissional>();
     private ArrayList<Atividade> atividades = new ArrayList<Atividade>();
     private int valorBolsaProfissional;
@@ -67,11 +67,11 @@ public class Projeto {
         return dataHrFim;
     }
 
-    public void setPeriodoVigenciaBolsa(Date periodoVigenciaBolsa) {
+    public void setPeriodoVigenciaBolsa(int periodoVigenciaBolsa) {
         this.periodoVigenciaBolsa = periodoVigenciaBolsa;
     }
 
-    public Date getPeriodoVigenciaBolsa() {
+    public int getPeriodoVigenciaBolsa() {
         return periodoVigenciaBolsa;
     }
 
@@ -114,6 +114,10 @@ public class Projeto {
 
     public void addProfissional(Usuario profissional){
         profissionais.add((Profissional) profissional);
+    }
+
+    public void addAtividade(Atividade novaAtividade) {
+        atividades.add(novaAtividade);
     }
 
     public boolean removeProfissional(String nomeUsuarioParaRemover){

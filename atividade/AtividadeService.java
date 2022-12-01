@@ -25,12 +25,14 @@ public class AtividadeService {
         }
     }
 
-    public void criarAtividade(String identificacao, String descricao, Usuario responsavel) {
+    public Atividade criarAtividade(String identificacao, String descricao, Usuario responsavel) {
         if(verificacaoUsuario()){
-            Atividade novaAtividade = new Atividade(identificacao ,descricao, responsavel);
+            Atividade novaAtividade = new Atividade(identificacao, descricao, responsavel);
             atividades.add(novaAtividade);
             System.out.println("atividade adicionada com sucesso");
+            return novaAtividade;
         }
+        return null;
         
     }
 
@@ -44,7 +46,8 @@ public class AtividadeService {
         System.out.println("implementar");
     }
 
-    public void addTarefaAProfissional(){
-        System.out.println("implementar");
+    public void DesignaTarefaAProfissional(Atividade atividade, String novaTarefa, Usuario responsavel){
+        String tarefa;
+        Usuario profissional;
     }
 }

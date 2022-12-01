@@ -2,6 +2,8 @@ package menu;
 
 import java.util.Scanner;
 
+import Data.DataHandler;
+import atividade.Atividade;
 import atividade.AtividadeService;
 import projeto.Projeto;
 import projeto.ProjetoService;
@@ -13,6 +15,7 @@ public class DeProjetos implements Menu {
     ProjetoService projetoService = FactoryCustom.getInstanciaProjetoService();
     UsuarioService usuarioService = FactoryCustom.getInstanciaUsuarioService();
     AtividadeService atividadeService = FactoryCustom.getInstanciaAtividadeService();
+    DataHandler dataHandler = FactoryCustom.getInstanciaDataHandler();
     @Override
     public void principal() {
         boolean running = true;
@@ -115,13 +118,18 @@ public class DeProjetos implements Menu {
                     projeto.setValorBolsaProfissional(novoValorBolsa);
                     break;
                 case 4:
-                    System.out.println("implementar farofa da data");
+                    String dataInicio = input.nextLine();
+                    dataHandler.setDataHR(dataInicio);
+                    projetoService.setData(projeto, dataHandler.getDate(), 1);
                     break;
                 case 5:
-                    System.out.println("implementar farofa da data");
+                    String dataFim = input.nextLine();
+                    dataHandler.setDataHR(dataFim);
+                    projetoService.setData(projeto, dataHandler.getDate(), 2);
                     break;
                 case 6:
-                    System.out.println("implementar farofa da data");
+                    int qtdDias = input.nextInt();
+                    projetoService.setPeriodo(projeto, qtdDias);
                     break;
                 case 7:
                     String nomeDoProfissional = input.nextLine();
@@ -136,7 +144,8 @@ public class DeProjetos implements Menu {
                     Usuario responsavel = usuarioService.findUser(usuarioResponsavel);
                     if(responsavel != null){
                         System.out.println("usuario encontrado, criando atividade...");
-                        atividadeService.criarAtividade(identificacao, descricao, responsavel);
+                        Atividade novaAtividade = atividadeService.criarAtividade(identificacao, descricao, responsavel);
+                        projetoService.alocaAtividade(projeto, novaAtividade);
                         return;
                     }
                     System.out.println("usuario nao encontrado, atividade nao foi criada");

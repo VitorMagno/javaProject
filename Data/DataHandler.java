@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 public class DataHandler {
     private GregorianCalendar gc;
-    private Date paraManipular;
+    private Date dataConvertida;
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh");
 
     public void setDataHR(String data){
@@ -21,8 +21,8 @@ public class DataHandler {
     }
 
     public Date getDate(){
-        paraManipular = gc.getTime();
-        return paraManipular;
+        dataConvertida = gc.getTime();
+        return dataConvertida;
     }
 
     /**
@@ -37,15 +37,16 @@ public class DataHandler {
     }
 
     /**
-     * checa se o periodo ultrapassa a data final
+     * soma o periodo com a data de inicio e retorna data
      * @param inicio
-     * @param fim
      * @param periodo
      * @return
      */
-    public boolean checkPeriod(Date inicio, Date fim, int periodo){
+    public String somaPeriodo(Date inicio, int periodo){
         this.gc.setTime(inicio);
         this.gc.add(gc.DAY_OF_MONTH, periodo);
-        return this.gc.after(fim);
+        Date dataEncerramentoDaBolsa = this.gc.getTime();
+        
+        return formatter.format(dataEncerramentoDaBolsa);
     }
 }

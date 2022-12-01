@@ -2,11 +2,16 @@ package projeto;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import Data.DataHandler;
+import atividade.Atividade;
+import menu.FactoryCustom;
 import usuario.Usuario;
 import usuario.UsuarioService;
 
 public class ProjetoService {
+    private DataHandler dataHandler = FactoryCustom.getInstanciaDataHandler();
     private UsuarioService servicosDoUsuario = menu.FactoryCustom.getInstanciaUsuarioService();
     private Usuario usuarioLogado = servicosDoUsuario.getUsuarioLogado();
     private ArrayList<Projeto> projetos =  new ArrayList<Projeto>();
@@ -107,5 +112,23 @@ public class ProjetoService {
         System.out.println("em construcao");
     }
 
+    public void setData(Projeto projeto, Date novaData, int option){
+        if(option == 1){
+            projeto.setDataHrInicio(novaData);
+        }else{
+            projeto.setDataHrFim(novaData);
+        }
+    }
+
+    public void setPeriodo(Projeto projeto, int qtdDias){
+        projeto.setPeriodoVigenciaBolsa(qtdDias);
+    }
+
+    public void getPeriodoVigenciaBolsa(Projeto projeto){
+        System.out.println(dataHandler.somaPeriodo(projeto.getDataHrInicio(), projeto.getPeriodoVigenciaBolsa()));
+    }
+    public void alocaAtividade(Projeto projeto, Atividade novaAtividade) {
+        projeto.addAtividade(novaAtividade);
+    }
     
 }
