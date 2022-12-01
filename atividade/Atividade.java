@@ -21,6 +21,9 @@ public class Atividade {
         this.descricao = descricao;
         this.responsavel = responsavel;
     }
+    public String getIdentificacao(){
+        return identificacao;
+    }
     public String getDescricao() {
         return descricao;
     }
@@ -33,6 +36,12 @@ public class Atividade {
     public void setResponsavel(Usuario responsavel) {
         this.responsavel = responsavel;
     }
+    public void addProfissional(Usuario novoProfissional){
+        profissionais.add((Profissional) novoProfissional);
+    }
+    
+
+
     @Override
     public String toString() {
         return "Atividade [descricao = " + descricao + ", responsavel = " + responsavel + "]";
