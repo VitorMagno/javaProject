@@ -44,7 +44,7 @@ public class DataHandler {
      */
     public String somaPeriodo(Date inicio, int periodo){
         this.gc.setTime(inicio);
-        this.gc.add(gc.DAY_OF_MONTH, periodo);
+        this.gc.add(5, periodo);
         Date dataEncerramentoDaBolsa = this.gc.getTime();
         
         return formatter.format(dataEncerramentoDaBolsa);
