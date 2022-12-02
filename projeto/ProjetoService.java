@@ -13,21 +13,22 @@ import usuario.UsuarioService;
 public class ProjetoService {
     private DataHandler dataHandler = FactoryCustom.getInstanciaDataHandler();
     private UsuarioService servicosDoUsuario = menu.FactoryCustom.getInstanciaUsuarioService();
-    private Usuario usuarioLogado = servicosDoUsuario.getUsuarioLogado();
+    private Usuario usuarioLogado; 
     private ArrayList<Projeto> projetos =  new ArrayList<Projeto>();
     private String[] status = {"Em processo de criacao", "Iniciado", "Em andamento", "Concluido"};
 
     public boolean verificacaoUsuario(){
+        usuarioLogado = servicosDoUsuario.getUsuarioLogado();
         if(usuarioLogado == null){
             System.out.println("usuario nao logado, por favor faca o login para acessar a essa funcionalidade");
             return false;
         }
-        else if(usuarioLogado.getClass().getSimpleName() != "Professor"){
-            System.out.println("verificando usuario...\nFuncionalidade exclusiva para professores");
-            return false;
-        }else{
+        if(usuarioLogado.getClass().getSimpleName().equalsIgnoreCase("Professor")){
             System.out.println("verificando usuario....\nAceito");
             return true;
+        }else{
+            System.out.println("verificando usuario...\nFuncionalidade exclusiva para professores e vc eh " + usuarioLogado.getClass().getSimpleName());
+            return false;
         }
     }
 

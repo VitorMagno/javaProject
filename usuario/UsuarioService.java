@@ -1,14 +1,12 @@
 package usuario;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import menu.Input;
 
 public class UsuarioService {
     private ArrayList<Usuario> usuarios =  new ArrayList<Usuario>();
     private Usuario usuarioLogado = null;
-    Scanner input = Input.getInstancia();
     public void createAluno(String novoNome, String novoCpf, String novaUnidadeAcademica){
         Aluno novoAluno = new Aluno(novoNome, novoCpf, novaUnidadeAcademica);
         usuarios.add(novoAluno);
@@ -75,14 +73,19 @@ public class UsuarioService {
     public void editar(Usuario user){
         System.out.println("deseja editar: 1-nome 2-cpf 3-unidade academica");
         int option = 0;
+        option = Input.entradaDeInt();
         if(option == 1){
-            String novoNome = input.next();
+            System.out.println("digite novo nome:\n");
+            String novoNome = Input.entradaDeLinha();
+            System.out.println("voce digitou o novo nome:" + novoNome);
             user.setNome(novoNome);
         }else if(option == 2){
-            String novoCpf = input.next();
+            System.out.println("digite novo cpf:\n");
+            String novoCpf = Input.entradaDeLinha();
             user.setCpf(novoCpf);
         }else if(option == 3){
-            String novaUnidadeAcademica = input.next();
+            System.out.println("digite nova unidade academica:\n");
+            String novaUnidadeAcademica = Input.entradaDeLinha();
             user.setUnidadeAcademica(novaUnidadeAcademica);
         }else{
             System.out.println("opcao invalida, retornando ao menu anterior");
@@ -91,12 +94,12 @@ public class UsuarioService {
     }
     public void verEEditar(String nome){
         int option = 0;
-        Usuario verEeditar = findUser(nome);
-        verInfo(verEeditar);
+        Usuario editarUsuario = findUser(nome);
+        verInfo(editarUsuario);
         System.out.println("deseja editar? 1-sim 2-nao");
-        option = input.nextInt();
+        option = Input.entradaDeInt();
         if(option == 1){
-
+            editar(editarUsuario);
         }else if(option == 2){
             System.out.println("edicao cancelada");
             return;
@@ -104,9 +107,6 @@ public class UsuarioService {
             System.out.println("opcao invalida, retornando ao menu anterior");
             return;
         }
-
-
-
     }
 
     public void removeUser(String nomeUsuario){

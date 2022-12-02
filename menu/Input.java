@@ -5,9 +5,23 @@ import java.util.Scanner;
 public final class Input {
     
     private static Scanner instancia;
-    public static Scanner getInstancia(){
-        if (instancia == null)
+
+    public static void getInstancia(){
+        if (instancia == null) {
             instancia =  new Scanner(System.in);
-        return instancia;
+        }
+    }
+    public static String entradaDeLinha(){
+        getInstancia();
+        String entrada;
+        entrada = instancia.nextLine();
+        return entrada;
+    }
+    public static int entradaDeInt(){
+        getInstancia();
+        int entrada;
+        entrada = instancia.nextInt();
+        instancia.nextLine();
+        return entrada;
     }
 }

@@ -1,11 +1,9 @@
 package menu;
 
-import java.util.Scanner;
 
 import usuario.UsuarioService;
 
 public class DeUsuarios implements Menu {
-    Scanner input = Input.getInstancia();
     UsuarioService usuarioService = FactoryCustom.getInstanciaUsuarioService();
     @Override
     public void principal() throws Exception{
@@ -13,7 +11,7 @@ public class DeUsuarios implements Menu {
         int option;
         while (running) {
             System.out.println("Selecione: \n1 - mostrar usuarios \n2 - adicionar usuario \n3 - ver usuario \n4 - excluir usuario \n0 - voltar ao menu principal");
-            option = input.nextInt();
+            option = Input.entradaDeInt();
             switch (option) {
                 case 1:
                     System.out.println("Menu mostrar usuarios"); 
@@ -56,7 +54,7 @@ public class DeUsuarios implements Menu {
     @Override
     public void ver(){
         System.out.println("digite o nome do usuario que quer ver mais informacoes");
-        String nomePVer = (String) input.next();
+        String nomePVer = Input.entradaDeLinha();
         usuarioService.verEEditar(nomePVer);
         return;
     }
@@ -64,7 +62,7 @@ public class DeUsuarios implements Menu {
     @Override
     public void excluir(){
         System.out.println("digite o nome do usuario que quer excluir");
-        String nomePExclusao = (String) input.next();
+        String nomePExclusao = Input.entradaDeLinha();
         usuarioService.removeUser(nomePExclusao);
         return;
     }
