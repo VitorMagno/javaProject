@@ -105,7 +105,7 @@ public class DeProjetos implements Menu {
             while (running) {
                 System.out.println("-------------\n1 - editar nome \n2 - editar descricao \n3 - editar valor bolsa \n4 - editar data inicio \n5 - editar data fim"+
             "\n6 - editar periodo de vigencia da bolsa \n7 - adicionar profissional \n8 - criar atividades nesse projeto \n9 - status do projeto"+ 
-            "\n10 - gerenciar atividades desse projeto \n11 - sair\n-------------" );
+            "\n10 - gerenciar atividades desse projeto \n11 - retorna ao menu anterior\n-------------" );
                 option = Input.entradaDeInt();
                 switch (option) {
                     case 1:
@@ -194,7 +194,7 @@ public class DeProjetos implements Menu {
         boolean running = true;
         while (running) {
             
-            System.out.println("digite: \n1-criar atividade \n2-ver atividades \n3-selecionar atividade para ediçao ou adiçao de informaçoes \n4-excluir atividade \n5-sair");
+            System.out.println("digite: \n1-criar atividade \n2-ver atividades \n3-selecionar atividade para ediçao ou adiçao de informaçoes \n4-excluir atividade \n5-retorna ao menu anterior");
             option = Input.entradaDeInt();
             switch (option) {
                 case 1:
@@ -246,7 +246,7 @@ public class DeProjetos implements Menu {
         boolean running = true;
         while (running) {
             System.out.println("editar: \n1-identificacao \n2-descricao \n3-responsavel \n4-inicio \n5-fim \n6-adicionar profissional" +
-            "\n7-alocar tarefa a profissional \n8-sair");
+            "\n7-alocar tarefa a profissional \n8-retorna ao menu anterior");
             option = Input.entradaDeInt();
             switch (option) {
                 case 1:
