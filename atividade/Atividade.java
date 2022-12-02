@@ -3,6 +3,7 @@ package atividade;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Data.DataHandler;
 import usuario.Profissional;
 import usuario.Usuario;
 
@@ -21,6 +22,9 @@ public class Atividade {
         this.descricao = descricao;
         this.responsavel = responsavel;
     }
+    public void setIdentificacao(String identificacao) {
+        this.identificacao = identificacao;
+    }
     public String getIdentificacao(){
         return identificacao;
     }
@@ -29,6 +33,18 @@ public class Atividade {
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    public void setDataHrFim(Date dataHrFim) {
+        this.dataHrFim = dataHrFim;
+    }
+    public Date getDataHrFim() {
+        return dataHrFim;
+    }
+    public Date getDataHrInicio() {
+        return dataHrInicio;
+    }
+    public void setDataHrInicio(Date dataHrInicio) {
+        this.dataHrInicio = dataHrInicio;
     }
     public Usuario getResponsavel() {
         return responsavel;
@@ -39,12 +55,31 @@ public class Atividade {
     public void addProfissional(Usuario novoProfissional){
         profissionais.add((Profissional) novoProfissional);
     }
+
+    public Profissional buscaProfissional(String nomeDoProfissional) {
+        Profissional achado = null;
+        for(Profissional profissional: profissionais){
+            if(profissional.getNome().equals(nomeDoProfissional)){
+                achado = profissional;
+                break;
+            }
+            
+        }
+        if(achado == null){
+            System.out.println("profissional nao encontrado:");
+            return achado;
+        }
+        return achado;
+        
+    }
+    public void addTarefaParaProfissional(Profissional profissional, String descricao){
+        TarefasPorProfissional novaTarefa = new TarefasPorProfissional(descricao, profissional);
+        tarefasPorProfissional.add(novaTarefa);
+    }
     
-
-
     @Override
     public String toString() {
-        return "Atividade [descricao = " + descricao + ", responsavel = " + responsavel + "]";
+        return "Atividade [descricao = " + descricao + ", responsavel = " + responsavel + ", data inicio = "+ DataHandler.dateToString(dataHrInicio)+ ", data fim = "+DataHandler.dateToString(dataHrFim)+"]";
     }
     
     

@@ -25,8 +25,9 @@ public class DataHandler {
         return dataConvertida;
     }
 
-    public String dateToString(){
-        String dataString = formatter.format(getDate());
+    public static String dateToString(Date dataParaString){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh");
+        String dataString = formatter.format(dataParaString);
         return dataString;
     }
 

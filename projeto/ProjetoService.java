@@ -95,6 +95,7 @@ public class ProjetoService {
                 projetoEncontrado.removeProfissional(nomeProfissional);
                 return;
             }
+            System.out.println("abortado");
         }
 
     }
@@ -130,5 +131,10 @@ public class ProjetoService {
     public void alocaAtividade(Projeto projeto, Atividade novaAtividade) {
         projeto.addAtividade(novaAtividade);
     }
-    
+    public void listarAtividades(Projeto projeto){
+        projeto.listarAtividades();
+    }
+    public void removeAtividade(Atividade a, Projeto p){
+        p.removeAtividade(a);
+    }
 }

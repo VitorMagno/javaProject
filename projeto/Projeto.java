@@ -105,7 +105,17 @@ public class Projeto {
         }
         return usuarioBuscado;
     }
-
+    public Atividade buscaAtividade(String nomeAtividade){
+        for (Atividade atividade : atividades) {
+            if(atividade.getIdentificacao().equalsIgnoreCase(nomeAtividade)){
+                return atividade;
+            }
+        }
+        return null;
+    }
+    public void removeAtividade(Atividade a){
+        atividades.remove(a);
+    }
     public void mostrarProfissionais(){
         for (Profissional profissional : profissionais) {
             System.out.println("Nome: "+profissional.getNome()+"\nUnidade academica: "+profissional.getUnidadeAcademica());
@@ -118,6 +128,11 @@ public class Projeto {
 
     public void addAtividade(Atividade novaAtividade) {
         atividades.add(novaAtividade);
+    }
+    public void listarAtividades(){
+        for (Atividade atividade : atividades) {
+            System.out.println(atividade);
+        }
     }
 
     public boolean removeProfissional(String nomeUsuarioParaRemover){
