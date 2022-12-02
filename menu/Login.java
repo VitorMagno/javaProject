@@ -9,24 +9,22 @@ public final class Login {
     public static void doLogin() throws Exception{
         String nome, cpf;
         UsuarioService usuarioService = FactoryCustom.getInstanciaUsuarioService();
-        System.out.println("digite o nome e o cpf");
+        System.out.println("digite o nome");
         nome = (String) Input.entradaDeLinha();
-        System.out.println(nome);
+        System.out.println("e o cpf");
         cpf = (String) Input.entradaDeLinha();
-        System.out.println(cpf);
         usuarioService.logar(nome, cpf);
     }
 
     public static void doSignIn() throws Exception{
         String nome, cpf, unidadeAcademica;
         UsuarioService usuarioService = FactoryCustom.getInstanciaUsuarioService();
-        System.out.println("digite o nome, cpf e unidade academica");
+        System.out.println("digite o nome");
         nome = (String) Input.entradaDeLinha();
-        System.out.println(nome);
+        System.out.println("cpf");
         cpf = (String) Input.entradaDeLinha();
-        System.out.println(cpf);
+        System.out.println("e unidade academica");
         unidadeAcademica = (String) Input.entradaDeLinha();
-        System.out.println(unidadeAcademica);
         System.out.println("digite: \n1 - aluno \n2 - professor \n3 - pesquisador \n4 - profissional");
         int option = Input.entradaDeInt();
         switch (option) {

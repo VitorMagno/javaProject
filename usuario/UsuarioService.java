@@ -51,7 +51,7 @@ public class UsuarioService {
 
     public void mostrarTodos(){
         for (Usuario usuario : usuarios) {
-            System.out.println(usuario.getNome()+ " " + usuario.getCpf());
+            System.out.println(usuario);
         }
     }
 

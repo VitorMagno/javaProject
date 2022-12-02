@@ -57,11 +57,11 @@ public class DeProjetos implements Menu {
     @Override
     public void criar(){
         String nome, descricao, unidadeAcademica;
-        System.out.println("digite o nome:\n");
+        System.out.println("digite o nome:");
         nome = Input.entradaDeLinha();
-        System.out.println("digite a descricao:\n");
+        System.out.println("digite a descricao:");
         descricao = Input.entradaDeLinha();
-        System.out.println("digite a unidade academica:\n");
+        System.out.println("digite a unidade academica:");
         unidadeAcademica = Input.entradaDeLinha();
         projetoService.criarProjeto(nome, descricao, unidadeAcademica);
         return;
@@ -101,7 +101,7 @@ public class DeProjetos implements Menu {
     public void editar(Projeto projeto){
         if (projetoService.verificacaoUsuario()){
             System.out.println("-------------\n1 - editar nome \n2 - editar descricao \n3 - editar valor bolsa \n4 - editar data inicio \n5 - editar data fim"+
-            "\n6 - editar perio de vigencia da bolsa \n7 - adicionar profissional \n8 - gerenciar atividades desse projeto \n9 - status do projeto\n-------------" );
+            "\n6 - editar periodo de vigencia da bolsa \n7 - adicionar profissional \n8 - criar atividades nesse projeto \n9 - status do projeto \n10 - gerenciar atividades desse projeto\n-------------" );
             int option = Input.entradaDeInt();
             switch (option) {
                 case 1:
@@ -146,18 +146,24 @@ public class DeProjetos implements Menu {
                     }
                     break;
                 case 8:
-                    System.out.println("digite a descricao da atividade e em seguida o usuario responsavel");
+                    System.out.println("digite a identificacao");
                     String identificacao = Input.entradaDeLinha();
+                    System.out.println("descricao da atividade");
                     String descricao = Input.entradaDeLinha();
+                    System.out.println("usuario responsavel");
                     String usuarioResponsavel = Input.entradaDeLinha();
                     Usuario responsavel = usuarioService.findUser(usuarioResponsavel);
                     if(responsavel != null){
                         System.out.println("usuario encontrado, criando atividade...");
                         Atividade novaAtividade = atividadeService.criarAtividade(identificacao, descricao, responsavel);
+                        if(novaAtividade == null){
+                            System.out.println("abortado");
+                            return;
+                        }
                         projetoService.alocaAtividade(projeto, novaAtividade);
                         return;
                     }
-                    System.out.println("usuario nao encontrado, atividade nao foi criada");
+                    System.out.println("atividade nao foi criada");
                     break;
                 case 9:
                     System.out.println("digite o nome do projeto que deseja mudar o status");
@@ -236,12 +242,12 @@ public class DeProjetos implements Menu {
                 System.out.println("digite o nome do novo responsavel, deve ser um profissional");
             break;
             case 4:
-                System.out.println("digite a nova data e hr de inicio, no formato dd/mm/aaaa hh");
+                System.out.println("digite a nova data e hr de inicio, no formato 'dd/mm/aaaa' hh");
                 String dataInicio = Input.entradaDeLinha();
                 atividadeService.setData(dataInicio, atividade, 1);
             break;
             case 5:
-                System.out.println("digite a nova data e hr de fim, no formato dd/mm/aaaa hh");
+                System.out.println("digite a nova data e hr de fim, no formato 'dd/mm/aaaa' hh");
                 String dataFim = Input.entradaDeLinha();
                 atividadeService.setData(dataFim, atividade, 2);
             break;

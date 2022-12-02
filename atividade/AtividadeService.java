@@ -13,10 +13,11 @@ import usuario.UsuarioService;
 public class AtividadeService {
     DataHandler dataHandler = FactoryCustom.getInstanciaDataHandler();
     UsuarioService servicosDoUsuario = FactoryCustom.getInstanciaUsuarioService();
-    Usuario usuarioLogado = servicosDoUsuario.getUsuarioLogado();
+    Usuario usuarioLogado;
     private ArrayList<Atividade> atividades =  new ArrayList<Atividade>();
 
     public boolean verificaSeProfessor(){
+        usuarioLogado = servicosDoUsuario.getUsuarioLogado();
         if(usuarioLogado == null){
             System.out.println("usuario nao logado, por favor faca o login para acessar a essa funcionalidade");
             return false;

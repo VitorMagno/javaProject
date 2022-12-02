@@ -42,7 +42,7 @@ public class Aluno implements Usuario {
 
     @Override
     public String toString(){
-        return "-----------\nNome: " + getNome() + "\nCpf: " + getCpf() + "\nUnidade Academica: " + getUnidadeAcademica()+
+        return "\n-----------\nNome: " + getNome() + "\nCpf: " + getCpf() + "\nUnidade Academica: " + getUnidadeAcademica()+
         "\nFuncao: " +this.getClass().getSimpleName() +"\n-----------";
     }
     
