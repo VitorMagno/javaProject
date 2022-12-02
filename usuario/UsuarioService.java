@@ -62,6 +62,11 @@ public class UsuarioService {
                 achado = usuario;
                 break;
             }
+            
+        }
+        if(achado == null){
+            System.out.println("usuario nao encontrado:");
+            return achado;
         }
         return achado;
     }

@@ -25,6 +25,11 @@ public class DataHandler {
         return dataConvertida;
     }
 
+    public String dateToString(){
+        String dataString = formatter.format(getDate());
+        return dataString;
+    }
+
     /**
      * checa se a data de inicio eh anterior a data final
      * @param inicio

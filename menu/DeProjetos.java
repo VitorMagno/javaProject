@@ -57,8 +57,11 @@ public class DeProjetos implements Menu {
     @Override
     public void criar(){
         String nome, descricao, unidadeAcademica;
+        System.out.println("digite o nome:\n");
         nome = Input.entradaDeLinha();
+        System.out.println("digite a descricao:\n");
         descricao = Input.entradaDeLinha();
+        System.out.println("digite a unidade academica:\n");
         unidadeAcademica = Input.entradaDeLinha();
         projetoService.criarProjeto(nome, descricao, unidadeAcademica);
         return;
@@ -66,8 +69,6 @@ public class DeProjetos implements Menu {
 
     @Override
     public void ver(){
-        System.out.println("seleciona um projeto, mostra opcao de editar nome, descricao, valor da bolsa, data de inicio, data de fim, periodo de vigencia da bolsa"
-        +"adicionar profissional, adicionar atividade, mudar status");
         System.out.println("digite o nome do projeto para ver mais detalhes e opcoes"); 
         String nomeDoProjeto = Input.entradaDeLinha();
         Projeto projetoEncontrado = projetoService.findProjeto(nomeDoProjeto);
@@ -104,35 +105,47 @@ public class DeProjetos implements Menu {
             int option = Input.entradaDeInt();
             switch (option) {
                 case 1:
+                    System.out.println("digite novo nome:");
                     String novoNome = Input.entradaDeLinha();
                     projeto.setNome(novoNome);
                     break;
                 case 2:
+                    System.out.println("digite nova descricao:");
                     String novaDescricao = Input.entradaDeLinha();
                     projeto.setDescricao(novaDescricao);
                     break;
                 case 3:
+                    System.out.println("digite novo valor:");
                     int novoValorBolsa = Input.entradaDeInt();
                     projeto.setValorBolsaProfissional(novoValorBolsa);
                     break;
                 case 4:
+                    System.out.println("digite nova data e hr no formato 'dd/mm/aa hr':");
                     String dataInicio = Input.entradaDeLinha();
                     dataHandler.setDataHR(dataInicio);
                     projetoService.setData(projeto, dataHandler.getDate(), 1);
+                    System.out.println("nova data: "+dataHandler.dateToString());
                     break;
                 case 5:
+                    System.out.println("digite nova data e hr no formato 'dd/mm/aa hr':");
                     String dataFim = Input.entradaDeLinha();
                     dataHandler.setDataHR(dataFim);
                     projetoService.setData(projeto, dataHandler.getDate(), 2);
+                    System.out.println("nova data: "+dataHandler.dateToString());
                     break;
                 case 6:
+                    System.out.println("digite a quantidade de dias que durara a bolsa:");
                     int qtdDias = Input.entradaDeInt();
                     projetoService.setPeriodo(projeto, qtdDias);
                     break;
                 case 7:
+                    System.out.println("digite o nome do profissional: ");
                     String nomeDoProfissional = Input.entradaDeLinha();
                     Usuario usuarioEncontrado  = usuarioService.findUser(nomeDoProfissional);
-                    projeto.addProfissional(usuarioEncontrado);
+                    if(usuarioEncontrado!=null){
+                        System.out.println("usuario encontrado foi: "+usuarioEncontrado);
+                        projeto.addProfissional(usuarioEncontrado);
+                    }
                     break;
                 case 8:
                     System.out.println("digite a descricao da atividade e em seguida o usuario responsavel");
@@ -149,6 +162,7 @@ public class DeProjetos implements Menu {
                     System.out.println("usuario nao encontrado, atividade nao foi criada");
                     break;
                 case 9:
+                    System.out.println("digite o nome do projeto que deseja mudar o status");
                     String nomeDoProjeto = Input.entradaDeLinha();
                     projetoService.changeStatus(nomeDoProjeto);
                     break;

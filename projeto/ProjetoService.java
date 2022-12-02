@@ -49,7 +49,6 @@ public class ProjetoService {
                 projetos.remove(projetoParaExclusao);
                 return;
             }
-            System.out.println("projeto nao encontrado");
         }
     }
 
@@ -62,10 +61,12 @@ public class ProjetoService {
     public Projeto findProjeto(String nomeProjeto){
         Projeto projetoEncontrado = null;
         for (Projeto projeto : projetos) {
-            if(projeto.getNome().equals(nomeProjeto)){
+            if(projeto.getNome().equalsIgnoreCase(nomeProjeto)){
                 projetoEncontrado = projeto;
-                return projetoEncontrado;
             }
+        }
+        if(projetoEncontrado == null){
+            System.out.println("projeto nao encontrado, cancelando operacao");
         }
         return projetoEncontrado;
     }
@@ -94,7 +95,6 @@ public class ProjetoService {
                 projetoEncontrado.removeProfissional(nomeProfissional);
                 return;
             }
-            System.out.println("projeto nao encontrado");
         }
 
     }
@@ -105,7 +105,6 @@ public class ProjetoService {
             if(projetoChange != null){
                 gerenciaEstados();
             }
-            System.out.println("projeto nao encontrado");
         }
     }
 
