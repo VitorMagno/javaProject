@@ -150,7 +150,8 @@ public class Projeto {
     public String toString() {
         
         return "------------\nNome: " + getNome() +  "\nDescricao: " + getDescricao() +
-        "\nUnidade academica: " + getUnidadeAcademica() + "\nBolsa: " + getValorBolsaProfissional() + "\n------------";
+        "\nUnidade academica: " + getUnidadeAcademica() + "\nBolsa: " + getValorBolsaProfissional() +
+        "\nData hr inicio: "+ data.DataHandler.dateToString(dataHrInicio) + "\nData hr fim: " + data.DataHandler.dateToString(dataHrFim) + "\n------------";
     }
 
 }
