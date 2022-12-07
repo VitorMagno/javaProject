@@ -3,7 +3,7 @@ package atividade;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Data.DataHandler;
+import data.DataHandler;
 import menu.FactoryCustom;
 
 import usuario.Profissional;
@@ -18,11 +18,12 @@ public class AtividadeService {
 
     public boolean verificaSeProfessor(){
         usuarioLogado = servicosDoUsuario.getUsuarioLogado();
+        System.out.println(usuarioLogado.getClass().getSimpleName());
         if(usuarioLogado == null){
             System.out.println("usuario nao logado, por favor faca o login para acessar a essa funcionalidade");
             return false;
         }
-        else if(usuarioLogado.getClass().getSimpleName() != "Professor"){
+        else if(!usuarioLogado.getClass().getSimpleName().equalsIgnoreCase("professor")){
             System.out.println("verificando usuario...\nFuncionalidade exclusiva para professores");
             return false;
         }else{
@@ -35,7 +36,7 @@ public class AtividadeService {
             System.out.println("usuario reconhecido");
             return false;
         }
-        else if(usuario.getClass().getSimpleName() != "Profissional"){
+        else if(!usuario.getClass().getSimpleName().equalsIgnoreCase("profissional")){
             System.out.println("verificando usuario...\nFuncionalidade exclusiva para professores");
             return false;
         }else{

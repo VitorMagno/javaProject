@@ -11,8 +11,8 @@ public class Atividade {
     private String identificacao;
     private String descricao;
     private Usuario responsavel;
-    private Date dataHrInicio;
-    private Date dataHrFim;
+    private Date dataHrInicio = new Date();
+    private Date dataHrFim= new Date();
     private ArrayList<Profissional> profissionais = new ArrayList<Profissional>();
     private ArrayList<TarefasPorProfissional> tarefasPorProfissional = new ArrayList<TarefasPorProfissional>();
     

@@ -12,8 +12,8 @@ public class Projeto {
     private String descricao;
     private String unidadeAcademica;
     private Usuario coordenador;
-    private Date dataHrInicio;
-    private Date dataHrFim;
+    private Date dataHrInicio = new Date();
+    private Date dataHrFim = new Date();
     private int periodoVigenciaBolsa;
     private ArrayList<Profissional> profissionais = new ArrayList<Profissional>();
     private ArrayList<Atividade> atividades = new ArrayList<Atividade>();

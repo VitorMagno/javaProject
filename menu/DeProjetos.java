@@ -104,8 +104,8 @@ public class DeProjetos implements Menu {
             boolean running =true;
             while (running) {
                 System.out.println("-------------\n1 - editar nome \n2 - editar descricao \n3 - editar valor bolsa \n4 - editar data inicio \n5 - editar data fim"+
-            "\n6 - editar periodo de vigencia da bolsa \n7 - adicionar profissional \n8 - criar atividades nesse projeto \n9 - status do projeto"+ 
-            "\n10 - gerenciar atividades desse projeto \n11 - retorna ao menu anterior\n-------------" );
+            "\n6 - editar periodo de vigencia da bolsa \n7 - adicionar profissional \n8 - status do projeto"+ 
+            "\n9 - gerenciar atividades desse projeto \n10 - retorna ao menu anterior\n-------------" );
                 option = Input.entradaDeInt();
                 switch (option) {
                     case 1:
@@ -150,35 +150,15 @@ public class DeProjetos implements Menu {
                         }
                         break;
                     case 8:
-                        System.out.println("digite a identificacao");
-                        String identificacao = Input.entradaDeLinha();
-                        System.out.println("descricao da atividade");
-                        String descricao = Input.entradaDeLinha();
-                        System.out.println("usuario responsavel");
-                        String usuarioResponsavel = Input.entradaDeLinha();
-                        Usuario responsavel = usuarioService.findUser(usuarioResponsavel);
-                        if(responsavel != null){
-                            System.out.println("usuario encontrado, criando atividade...");
-                            Atividade novaAtividade = atividadeService.criarAtividade(identificacao, descricao, responsavel);
-                            if(novaAtividade == null){
-                                System.out.println("abortado");
-                                return;
-                            }
-                            projetoService.alocaAtividade(projeto, novaAtividade);
-                            return;
-                        }
-                        System.out.println("atividade nao foi criada");
-                        break;
-                    case 9:
                         System.out.println("digite o nome do projeto que deseja mudar o status");
                         String nomeDoProjeto = Input.entradaDeLinha();
                         projetoService.changeStatus(nomeDoProjeto);
                         break;
-                    case 10:
+                    case 9:
                         System.out.println("gerenciar atividades desse projeto");
                         atividades(projeto);
                         break;
-                    case 11: 
+                    case 10: 
                         System.out.println("saindo");
                         return;
                     default:
